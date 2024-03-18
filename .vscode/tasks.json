@@ -1,0 +1,35 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Launch SEGGER J-Link GDB Server",
+      "type": "process",
+      "command": "C:/Program Files/SEGGER/JLink/JLinkGDBServerCL.exe",
+      "args": [
+        "-singlerun",
+        "-nogui",
+        "-device", "STM32H750IB",
+        "-if", "swd"
+      ],
+      "group": "none",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated"
+      },
+      "problemMatcher": {
+				"owner": "custom",
+				"pattern": {
+					"regexp": "__________________"
+				},
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": ".*",
+					"endsPattern": ".*Waiting for GDB connection.*"
+				}
+			}
+    }
+  ]
+}
